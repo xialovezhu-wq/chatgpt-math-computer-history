@@ -18,15 +18,25 @@ const targetFiles = new Set([
 const expectedSourceHash =
   "8fba32f8baa6d984b0f0f4149d3da46221e3adb3b52836f85fe65e31e655a8c0";
 const expectedCandidateHash =
-  "76295b39f44d2eb53b30f41de63d1b5a548524ef4a687ff35c514e2d3c993922";
+  "e3497261ea7fcc556ad9a2f829d361c1a593a86b698175ed6825b8c92e05adef";
 const expectedHeaderHash =
-  "632f5db2cea66426102e2e054aa1ac3adefd2b26360819ea9f9cd0c9b094fad9";
+  "b4aef8c9d820237147c9a8434caa99ca12960e690d36497eab9114205b7b4aad";
 const expectedExtensionTargetHash =
   "a9020cd19a6e156065ebba4cced3869df02dd53e48cb95bb33631ceb99bc1c97";
 const expectedBubbleTargetHash =
   "2a2fddb0a1d8279c15ccfebb6c5aeb6cc1a102a277b9cb74215cd9c293b73a19";
 const expectedAnnotationTargetHash =
   "077112d4aff6f9c35f02fc3c3ddde68c1bfaca6b1375339e0cdda9eb373121de";
+const expectedEnsureHelper =
+  "async function codexMathEnsureHistoryCompanion(){let{execFile:e}=await import(`node:child_process`);return await new Promise((t,n)=>e(`/bin/zsh`,[`/Users/USER_NAME/Library/Application Support/Codex Math History Companion/manage.sh`,`--user-activate`],{timeout:6e4,maxBuffer:1048576},(e,r)=>{if(e){n(e);return}try{let e=JSON.parse(r);if(!e||e.ok!==!0)throw Error(`History companion activation failed`);t(e)}catch(e){n(e)}}))}";
+const retryActivationOld =
+  "async retryActivation(){this.#r();try{await this.appServerConnection.reconcileSkysightChronicle()}catch{}return this.getState()}";
+const retryActivationNew =
+  "async retryActivation(){this.#r();await codexMathEnsureHistoryCompanion();try{await this.appServerConnection.reconcileSkysightChronicle()}catch{}return this.getState()}";
+const setEnabledOld =
+  "async setEnabled(e){if(!e)return this.#e();let t=this.#i();try{let e=await this.appServerConnection.enableSkysightChronicle();return await this.#n(!0),this.#t(!0,e.state)}catch(e){let r=n.Un(e);if(r===`pending`)return await this.#n(!0),{enabled:!0,recorderState:`stopped`,activationState:`waiting_for_permissions`};let i=[()=>t.disable(),()=>this.#n(!1)];return r===`denied`?(await uw(e,`Failed to enable Chronicle and roll back`,i),{enabled:!1,recorderState:`stopped`,activationState:`idle`}):lw(e,`Failed to enable Chronicle and roll back`,i)}}";
+const setEnabledNew =
+  "async setEnabled(e){if(!e)return this.#e();let t=this.#i();await codexMathEnsureHistoryCompanion();try{let e=await this.appServerConnection.enableSkysightChronicle();return await this.#n(!0),this.#t(!0,e.state)}catch(e){let r=n.Un(e);if(r===`pending`)return await this.#n(!0),{enabled:!0,recorderState:`stopped`,activationState:`waiting_for_permissions`};let i=[()=>t.disable(),()=>this.#n(!1)];return r===`denied`?(await uw(e,`Failed to enable Chronicle and roll back`,i),{enabled:!1,recorderState:`stopped`,activationState:`idle`}):lw(e,`Failed to enable Chronicle and roll back`,i)}}";
 
 function sha256(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
@@ -231,12 +241,30 @@ if (
 ) {
   throw new Error("History target is not appended after annotation target");
 }
-if (historyTargetNode.integrity.hash !== "ed19424ed076e1240b44197eec59b53275d530820e50fc2152f671af87250206") {
+if (historyTargetNode.integrity.hash !== "afae01b08a1d7edca6c2f0779dab49b6e161a35bb2fc61035b4ae737b19b8573") {
   throw new Error("History target entry hash mismatch");
 }
 if (findAll(historyTarget, "codexMathHistoryCall") !== 6) {
   throw new Error("History proxy marker count mismatch");
 }
+verifyCounts(
+  historyTarget,
+  "History target",
+  new Map([
+    [expectedEnsureHelper, 1],
+    ["codexMathEnsureHistoryCompanion", 3],
+    ["--user-activate", 1],
+    [retryActivationOld, 0],
+    [retryActivationNew, 1],
+    [setEnabledOld, 0],
+    [setEnabledNew, 1],
+    ["async getState(){let[e,t]=await Promise.all([this.appServerConnection.isChronicleFeatureConfigured(),codexMathHistoryCall(`computer_history_status`)]);return this.#t(e,t.state)}", 1],
+    ["async pause(){let e=await codexMathHistoryCall(`computer_history_pause`);return this.#t(!0,e.state)}", 1],
+    ["async resume(){this.#r();let e=await codexMathHistoryCall(`computer_history_resume`);return this.#t(!0,e.state)}", 1],
+    ["async getSettings(){return codexMathHistoryCall(`computer_history_get_settings`)}", 1],
+    ["async updateSettings(e){return codexMathHistoryCall(`computer_history_update_settings`,e)}", 1],
+  ]),
+);
 
 function verifyCounts(target, label, expectedCounts) {
   for (const [marker, expectedCount] of expectedCounts) {
@@ -343,6 +371,12 @@ console.log(
       annotationTargetSize: annotationTarget.length,
       annotationTargetHash: annotationTargetNode.integrity.hash,
       annotationTargetOffset: annotationTargetNode.offset,
+      historyTargetHash: historyTargetNode.integrity.hash,
+      historyProxyMarkerCount: findAll(historyTarget, "codexMathHistoryCall"),
+      historyEnsureMarkerCount: findAll(
+        historyTarget,
+        "codexMathEnsureHistoryCompanion",
+      ),
       verification: "passed",
     },
     null,

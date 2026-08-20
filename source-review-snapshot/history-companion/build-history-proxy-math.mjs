@@ -13,8 +13,17 @@ if (sourcePath !== expectedSource || outputPath !== expectedOutput) {
 }
 
 const helper = "async function codexMathHistoryCall(e,t={}){let{execFile:n}=await import(`node:child_process`);return await new Promise((r,i)=>n(`/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node`,[`/Users/USER_NAME/Library/Application Support/Codex Math History Companion/mcp-call.mjs`,e,JSON.stringify(t)],{timeout:15e3,maxBuffer:1048576},(e,t)=>{if(e){i(e);return}try{r(JSON.parse(t))}catch(e){i(e)}}))}";
+const ensureHelper = "async function codexMathEnsureHistoryCompanion(){let{execFile:e}=await import(`node:child_process`);return await new Promise((t,n)=>e(`/bin/zsh`,[`/Users/USER_NAME/Library/Application Support/Codex Math History Companion/manage.sh`,`--user-activate`],{timeout:6e4,maxBuffer:1048576},(e,r)=>{if(e){n(e);return}try{let e=JSON.parse(r);if(!e||e.ok!==!0)throw Error(`History companion activation failed`);t(e)}catch(e){n(e)}}))}";
 const classAnchor = "var bue=class";
 const replacements = [
+  [
+    "async retryActivation(){this.#r();try{await this.appServerConnection.reconcileSkysightChronicle()}catch{}return this.getState()}",
+    "async retryActivation(){this.#r();await codexMathEnsureHistoryCompanion();try{await this.appServerConnection.reconcileSkysightChronicle()}catch{}return this.getState()}",
+  ],
+  [
+    "async setEnabled(e){if(!e)return this.#e();let t=this.#i();try{let e=await this.appServerConnection.enableSkysightChronicle();return await this.#n(!0),this.#t(!0,e.state)}catch(e){let r=n.Un(e);if(r===`pending`)return await this.#n(!0),{enabled:!0,recorderState:`stopped`,activationState:`waiting_for_permissions`};let i=[()=>t.disable(),()=>this.#n(!1)];return r===`denied`?(await uw(e,`Failed to enable Chronicle and roll back`,i),{enabled:!1,recorderState:`stopped`,activationState:`idle`}):lw(e,`Failed to enable Chronicle and roll back`,i)}}",
+    "async setEnabled(e){if(!e)return this.#e();let t=this.#i();await codexMathEnsureHistoryCompanion();try{let e=await this.appServerConnection.enableSkysightChronicle();return await this.#n(!0),this.#t(!0,e.state)}catch(e){let r=n.Un(e);if(r===`pending`)return await this.#n(!0),{enabled:!0,recorderState:`stopped`,activationState:`waiting_for_permissions`};let i=[()=>t.disable(),()=>this.#n(!1)];return r===`denied`?(await uw(e,`Failed to enable Chronicle and roll back`,i),{enabled:!1,recorderState:`stopped`,activationState:`idle`}):lw(e,`Failed to enable Chronicle and roll back`,i)}}",
+  ],
   [
     "async getState(){let e=this.#i(),[t,n]=await Promise.all([this.appServerConnection.isChronicleFeatureConfigured(),e.status()]);return this.#t(t,n.state)}",
     "async getState(){let[e,t]=await Promise.all([this.appServerConnection.isChronicleFeatureConfigured(),codexMathHistoryCall(`computer_history_status`)]);return this.#t(e,t.state)}",
@@ -108,9 +117,15 @@ const original = entryBytes(source, parsed.dataStart, targetNode);
 if (sha256(original) !== targetNode.integrity.hash) throw new Error("Original entry integrity mismatch");
 
 let modified = original.toString("utf8");
-modified = replaceOnce(modified, classAnchor, `${helper};${classAnchor}`);
+modified = replaceOnce(modified, classAnchor, `${helper};${ensureHelper};${classAnchor}`);
 for (const [oldText, newText] of replacements) modified = replaceOnce(modified, oldText, newText);
 if (count(modified, "codexMathHistoryCall") !== 6) throw new Error("Unexpected proxy marker count");
+if (count(modified, "codexMathEnsureHistoryCompanion") !== 3) {
+  throw new Error("Unexpected companion activation marker count");
+}
+if (count(modified, "--user-activate") !== 1) {
+  throw new Error("Unexpected user activation argument count");
+}
 const modifiedBytes = Buffer.from(modified);
 const originalData = source.subarray(parsed.dataStart);
 targetNode.offset = String(originalData.length);
@@ -142,4 +157,5 @@ console.log(JSON.stringify({
   modifiedSize: modifiedBytes.length,
   targetHash: verifiedNode.integrity.hash,
   markerCount: count(modified, "codexMathHistoryCall"),
+  ensureMarkerCount: count(modified, "codexMathEnsureHistoryCompanion"),
 }, null, 2));

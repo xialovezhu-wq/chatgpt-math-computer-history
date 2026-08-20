@@ -12,6 +12,12 @@ readonly log_file="${state_dir}/official-main.log"
 readonly pause_latch="${state_dir}/manual-pause.latch"
 readonly recovery_stamp="${state_dir}/last-recovery-at"
 readonly recovery_cooldown_seconds=1800
+readonly mode="${1:-}"
+
+if (( $# > 1 )) || [[ -n "${mode}" && "${mode}" != "--user-activate" ]]; then
+  /usr/bin/printf '%s\n' '{"ok":false,"state":"unavailable","reason":"invalid_arguments"}'
+  exit 64
+fi
 
 mkdir -p "${state_dir}"
 
@@ -62,6 +68,111 @@ recovery_is_cooling_down() {
   [[ "${last}" == <-> ]] || return 1
   (( now - last < recovery_cooldown_seconds ))
 }
+
+typeset -a companion_pids
+
+refresh_companion_pids() {
+  local pid_lines
+  pid_lines=$(
+    /bin/ps -axo pid=,command= | /usr/bin/awk \
+      -v expected="${app_binary} --user-data-dir=${profile_dir}" '
+        {
+          pid = $1
+          $1 = ""
+          sub(/^[[:space:]]+/, "", $0)
+          if ($0 == expected) print pid
+        }
+      '
+  )
+  if [[ -n "${pid_lines}" ]]; then
+    companion_pids=("${(@f)pid_lines}")
+  else
+    companion_pids=()
+  fi
+}
+
+normalized_history_state() {
+  case "$1" in
+    running|paused|stopped|disabled|unavailable)
+      /usr/bin/printf '%s\n' "$1"
+      ;;
+    *)
+      /usr/bin/printf '%s\n' unavailable
+      ;;
+  esac
+}
+
+user_activate_success() {
+  local companion="$1"
+  /usr/bin/printf \
+    '{"ok":true,"state":"running","companion":"%s"}\n' \
+    "${companion}"
+}
+
+user_activate_failure() {
+  local state="$1"
+  local reason="$2"
+  /usr/bin/printf \
+    '{"ok":false,"state":"%s","reason":"%s"}\n' \
+    "${state}" "${reason}"
+}
+
+user_activate() {
+  local companion=reused
+  local deadline
+  local pid
+  local state=unavailable
+
+  refresh_companion_pids
+  if (( ${#companion_pids[@]} > 1 )); then
+    user_activate_failure unavailable multiple_companion_instances
+    return 73
+  fi
+
+  if (( ${#companion_pids[@]} == 0 )); then
+    refresh_companion_pids
+    if (( ${#companion_pids[@]} > 1 )); then
+      user_activate_failure unavailable multiple_companion_instances
+      return 73
+    fi
+    if (( ${#companion_pids[@]} == 0 )); then
+      companion=started
+      HOME=/Users/USER_NAME /usr/bin/open -g -j -n -a /Applications/ChatGPT.app \
+        --args "--user-data-dir=${profile_dir}" >>"${log_file}" 2>&1
+      if (( $? != 0 )); then
+        user_activate_failure unavailable launch_failed
+        return 70
+      fi
+    fi
+  fi
+
+  deadline=$(( $(/bin/date +%s) + 45 ))
+  while (( $(/bin/date +%s) <= deadline )); do
+    refresh_companion_pids
+    if (( ${#companion_pids[@]} > 1 )); then
+      user_activate_failure "${state}" multiple_companion_instances
+      return 73
+    fi
+    state=$(normalized_history_state "$(history_state)")
+    if [[ "${state}" == "running" ]] && (( ${#companion_pids[@]} == 1 )); then
+      pid="${companion_pids[1]}"
+      /bin/echo "${pid}" >"${pid_file}"
+      /bin/rm -f "${pause_latch}"
+      lower_priority "${pid}" || true
+      user_activate_success "${companion}"
+      return 0
+    fi
+    /bin/sleep 1
+  done
+
+  user_activate_failure "${state}" activation_timeout
+  return 74
+}
+
+if [[ "${mode}" == "--user-activate" ]]; then
+  user_activate
+  exit $?
+fi
 
 state=$(history_state)
 pid=$(saved_pid)

@@ -8,15 +8,15 @@ a5c8e447f3972b801258dcd2da19eceba8add31e72e1134047ae41d0f7974901  ./docs/03-know
 1c449239c3fabc938a9b073d4df790b4a1ba4062729b5ab3d1f2e04cb0ecdfee  ./docs/07-user-claim-assessment.md
 18667161021ed0c53daf2582417ded402a18c06db1351b4e42435c6749e82f1e  ./docs/08-source-inventory.md
 7193e300ec120a50c1cca367c9d335933479fd4a6898e3fb8b579bfe1be4904d  ./evidence/current-state.json
-a3ab67504671676664ec1213c938023be4534be0fe933dcb1092cd22f083ce50  ./source-review-snapshot/history-companion/build-history-proxy-math.mjs
+5752d29cf75c365629d855e56bc3631af8623c4ab79a6913b30f4ce9ceb39e2a  ./source-review-snapshot/history-companion/build-history-proxy-math.mjs
 13100835f0773b10eea3245b618add6700588a4085033be4e76acf68dd71e27c  ./source-review-snapshot/history-companion/history-companion.LaunchAgent.plist
-0eeee2322a64e0f5e96f4b90303be8cfa0509ae133eaf3120c81a50336e927cd  ./source-review-snapshot/history-companion/manage.sh
+1df26bee0e1a6235a09819dd6a26f9dc04f76ce29c10f3c7fdd647aaef38e4a2  ./source-review-snapshot/history-companion/manage.sh
 add352cfe0e68e6e87477f37c6aa18c4cc7c997f49e0187be3da7ac45c74c5e9  ./source-review-snapshot/history-companion/mcp-call.mjs
 60d76fd9ab9193090fd8168a41832965372a3c64cb7b34a61f51f098d668f016  ./source-review-snapshot/math-patch/build-narrow-user-message-math.mjs
 af37a01a80848670a853bc16524cba1bd3a83ff291dc6a916cbb528f912db743  ./source-review-snapshot/math-patch/patch-single-dollar.mjs
 10692d627f2921b75d22acc49636383c7026aef6a63ff1ad76dfc1938b6cfdf6  ./source-review-snapshot/math-patch/patch-user-message-math.mjs
 380b17530e08596ec0da028af0e3be23b472eac4e289446d3f464ee69bbb44ac  ./source-review-snapshot/math-patch/search-asar-js.mjs
-288692a2b6c7842f0f234fb6d1bb457d7ef4350ec0d8e3c4362bb7dcb46fc727  ./source-review-snapshot/math-patch/verify-narrow-user-message-math.mjs
+7a766eb2d0691f738e81f93230982d3ec5c0804990a6c13b1022e8b13680c0b5  ./source-review-snapshot/math-patch/verify-narrow-user-message-math.mjs
 d8791d54b54c31989912e851705fe1daee94a12d34702f9b861acd3f3b5cb451  ./source-review-snapshot/package.json
 030b52ac0a901986b3c61cda71d9df30a98e6478db792ef7d4a3f45af75cf855  ./source-review-snapshot/signing/adhoc-electron-entitlements.plist
 c383b47718fe8b6c7c66d7c1fb1a275b34b2e23195dbd4b2f0c691f0003e6148  ./source-review-snapshot/signing/codex-math-designated-requirement.txt
@@ -25,4 +25,4 @@ c383b47718fe8b6c7c66d7c1fb1a275b34b2e23195dbd4b2f0c691f0003e6148  ./source-revie
 2130056c9218343fdea4442df592b944379669a63cecd5011bd7407dccb5d05d  ./source-review-snapshot/signing/stable-math-entitlements.plist
 1a9dc678c7592f105b1286d2f129a3663aff81a01bf3564632e172fe5f85915d  ./tools/README.md
 9fcaf7b68bb52bd3f1fef76dc1d810c6655797980dd0e14319de4daaebec2648  ./tools/inspect-only.sh
-ae385522f0e2cf2452fbfb0b7563c19990a219c6a36147696370b225519d7a27  ./tools/self-check.sh
+95e03308e7edffc18be255db3395adf0c95bec85dfea5f5412e59dc6468dcaad  ./tools/self-check.sh

@@ -205,3 +205,14 @@ History Companion LaunchAgent 每 300 秒运行一次 `manage.sh`。脚本查询
 - `.gitignore`
 
 Review Pack 原始文件、源码审查快照、工具和 `MANIFEST.sha256` 均保持不变。本次没有修改功能代码，没有启动或控制 ChatGPT 进程，也没有重新签名或部署应用。
+
+## 基线后实施状态
+
+- 已实现由用户显式触发的 Computer History companion activation。
+- 用户消息气泡和注释中的数学渲染保持正常。
+- 用户点击重试或启用 Computer History 时，可以启动官方 ChatGPT companion。
+- 默认 LaunchAgent 周期路径仍尊重用户主动暂停，不使用显式激活参数。
+- Companion 激活时可能出现一个可见官方窗口；这是当前用户已接受的已知限制。
+- 当前不再继续隐藏窗口优化或架构重构。
+- 后续官方版本更新时，必须从最新官方应用重新构建数学副本，不得在旧数学副本上增量覆盖。
+- 本章节不记录真实用户名、本机绝对路径、PID、凭据或本地回滚目录。

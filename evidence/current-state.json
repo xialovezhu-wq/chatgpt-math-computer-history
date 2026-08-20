@@ -1,0 +1,39 @@
+{
+  "captured_at_local": "2026-08-20",
+  "timezone": "Asia/Shanghai",
+  "official_app": {
+    "version": "26.814.41407",
+    "build": "6720",
+    "bundle_id": "com.openai.codex",
+    "app_asar_sha256": "8fba32f8baa6d984b0f0f4149d3da46221e3adb3b52836f85fe65e31e655a8c0",
+    "standard_main_process_found": false,
+    "gatekeeper": "accepted_notarized_developer_id",
+    "has_cua_application_group": true
+  },
+  "math_app": {
+    "version": "26.814.41407",
+    "build": "6720",
+    "bundle_id_redacted": "com.example.codex.math",
+    "app_asar_sha256": "76295b39f44d2eb53b30f41de63d1b5a548524ef4a687ff35c514e2d3c993922",
+    "main_process_found": true,
+    "profile_redacted": "/Users/USER_NAME/Library/Application Support/Codex",
+    "gatekeeper": "rejected_local_signing",
+    "has_cua_application_group": false,
+    "registered_url_schemes": ["codex", "http", "https"]
+  },
+  "history": {
+    "state": "stopped",
+    "launchagent_interval_seconds": 300,
+    "companion_main_pid_file_is_stale": true,
+    "companion_profile_process_observation": "multiple crashpad handlers from prior launches",
+    "remote_app_server_conflict_in_historical_log": true,
+    "raw_log_included": false
+  },
+  "patch": {
+    "modified_asar_entry_count": 4,
+    "single_dollar_sentinel_count": 2,
+    "annotation_math_sentinel_count": 4,
+    "history_proxy_call_sentinel_count": 6
+  },
+  "evidence_boundary": "Read-only process, plist, source, hash and sanitized log-pattern inspection. No controlled startup matrix was run."
+}

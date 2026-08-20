@@ -1,0 +1,1 @@
+designated => identifier "com.example.codex.math" and certificate leaf = H"LOCAL_CERT_SHA1_PLACEHOLDER"

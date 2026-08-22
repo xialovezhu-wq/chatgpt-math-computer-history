@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-22",
+  "scope": "post-system-trust-amfi-probe",
+  "final_status": "BLOCKED_SIGNING_IDENTITY_REQUIRED",
+  "update_complete": false,
+  "system_trust": {
+    "root_name": "Codex Math Local Root CA",
+    "root_sha256": "BBE6A65934BFFCCAECDEA135C82B5D0B2B3C989F9C9AB64873270D17BB97AE02",
+    "root_in_system_keychain": true,
+    "admin_trust_settings_present": true,
+    "admin_policy_oid": "Code Signing"
+  },
+  "identities": {
+    "valid_codesigning_count": 1,
+    "local_identity": "Codex Math Local Signing",
+    "apple_development_found": false,
+    "developer_id_application_found": false
+  },
+  "post_trust_probe": {
+    "identity": "Codex Math Local Signing",
+    "entitlements": "none",
+    "codesign_deep_strict": "passed",
+    "process_output": "SIGNING_TRUST_PROBE_OK",
+    "process_exit": 0,
+    "spctl": "rejected_exit_3",
+    "amfi": "failed_error_minus_423_unknown_certificate_chain",
+    "accepted_for_candidate_resigning": false
+  },
+  "corrected_diagnosis": {
+    "previous_status": "BLOCKED_KEYCHAIN_TRUST_ACTION_REQUIRED",
+    "previous_status_superseded": true,
+    "reason": "Administrator Code Signing trust is present but the real AMFI probe still rejects the local CA chain",
+    "required_identity": [
+      "Developer ID Application",
+      "Apple Development"
+    ],
+    "preferred_identity": "Developer ID Application",
+    "new_local_ca_recommended": false
+  },
+  "preservation": {
+    "official_asar_sha256": "128c748e313a7a630d689f9fa215724eb44fbea6e0a5d7990867370cf73d88d3",
+    "old_math_asar_sha256": "e3497261ea7fcc556ad9a2f829d361c1a593a86b698175ed6825b8c92e05adef",
+    "stage_e_candidate_sha256": "6ea7daa520796a215485fc2872b32da4c68a20ae3bc8295f2c758caa006c18e4",
+    "existing_blocked_commits_unchanged": true,
+    "existing_reports_and_receipts_preserved": true,
+    "new_candidate_installed": false
+  },
+  "not_performed": {
+    "candidate_resign": true,
+    "nested_signature_change": true,
+    "entitlement_change": true,
+    "candidate_deployment": true,
+    "fgh_runtime_acceptance": true,
+    "asar_entry_change": true,
+    "candidate_asar_hash_change": true,
+    "old_copy_deletion": true
+  }
+}

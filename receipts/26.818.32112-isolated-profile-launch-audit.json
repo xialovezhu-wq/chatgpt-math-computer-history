@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-22",
+  "scope": "old-math-isolated-profile-runtime-probe",
+  "final_status": "PASS_ISOLATED_PROFILE_LAUNCH",
+  "diagnosis_correction": "SIGNING_IDENTITY_BLOCKER_WITHDRAWN",
+  "attempts": [
+    {
+      "method": "CODEX_ELECTRON_USER_DATA_PATH",
+      "result": "exited_existing_session",
+      "process_exit": 0,
+      "profile_created": false,
+      "cause": "explicit path enables packaged macOS Electron single-instance lock"
+    },
+    {
+      "method": "--user-data-dir",
+      "result": "passed",
+      "observed_duration_seconds": 75,
+      "main_process_stable": true,
+      "window_accessible": true,
+      "renderer_loaded": true,
+      "app_server_initialized": true,
+      "app_server_connected": true,
+      "authenticated_account_present": true,
+      "project_and_task_list_visible": true,
+      "isolated_chromium_profile_created": true,
+      "amfi_process_kill_observed": false
+    }
+  ],
+  "runtime_findings": {
+    "local_identity_supports_full_app_launch": true,
+    "spctl_rejection_is_basic_runtime_blocker": false,
+    "amfi_minus_423_is_basic_runtime_blocker": false,
+    "dual_visible_ui_supported_as_long_term_topology": false,
+    "active_writer_conflict_observed": true,
+    "workspace_account_settings_boundary_observed": true
+  },
+  "remaining_repairs": {
+    "candidate_designated_requirement_matches_old": false,
+    "candidate_uses_root_requirement": true,
+    "old_uses_leaf_requirement": true,
+    "verifier_checks_requirement": false,
+    "stage_b_to_e_rebuild_required": false,
+    "candidate_asar_change_required": false
+  },
+  "cleanup": {
+    "old_math_test_main_process_remaining": false,
+    "old_math_test_child_processes_remaining": false,
+    "official_main_process_stopped": false,
+    "official_companion_observed": true,
+    "official_companion_changed_or_stopped": false,
+    "new_candidate_installed": false
+  },
+  "preservation": {
+    "stage_e_candidate_sha256": "6ea7daa520796a215485fc2872b32da4c68a20ae3bc8295f2c758caa006c18e4",
+    "old_math_app_modified": false,
+    "official_app_modified": false,
+    "existing_blocked_commits_rewritten": false,
+    "existing_reports_and_receipts_rewritten": false
+  }
+}

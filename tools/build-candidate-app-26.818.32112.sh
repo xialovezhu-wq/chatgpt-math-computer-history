@@ -33,7 +33,8 @@ old_bundle_id=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' ${old_mat
 
 old_team=$(codesign -dvvvv ${old_math_app} 2>&1 | /usr/bin/sed -n 's/^TeamIdentifier=//p' | /usr/bin/head -n 1)
 signing_identity=$(codesign -dvvvv ${old_math_app} 2>&1 | /usr/bin/sed -n 's/^Authority=//p' | /usr/bin/head -n 1)
-[[ ${old_team} == 'not set' && -n ${signing_identity} ]] || {
+old_requirement=$(codesign -d -r- ${old_math_app} 2>&1 | /usr/bin/sed -n '/^designated => /p' | /usr/bin/head -n 1)
+[[ ${old_team} == 'not set' && -n ${signing_identity} && -n ${old_requirement} ]] || {
   print -u2 'BLOCKED_SIGNING: old local signing topology unavailable'
   exit 1
 }
@@ -45,6 +46,6 @@ signing_identity=$(codesign -dvvvv ${old_math_app} 2>&1 | /usr/bin/sed -n 's/^Au
 /usr/libexec/PlistBuddy -c "Set :ElectronAsarIntegrity:Resources/app.asar:hash ${candidate_header_hash}" ${staging_app}/Contents/Info.plist
 /usr/libexec/PlistBuddy -c 'Set :ElectronAsarIntegrity:Resources/app.asar:algorithm SHA256' ${staging_app}/Contents/Info.plist
 
-/usr/bin/codesign --force --sign ${signing_identity} --entitlements ${entitlements} --timestamp=none ${staging_app}
+/usr/bin/codesign --force --sign ${signing_identity} --requirements "=${old_requirement}" --entitlements ${entitlements} --timestamp=none ${staging_app}
 
 print -r -- "{\"status\":\"PASS_CANDIDATE_APP_BUILD\",\"path\":\"${staging_app}\",\"bundleId\":\"${old_bundle_id}\",\"version\":\"${official_version}\",\"build\":\"${official_build}\",\"asarHash\":\"${candidate_hash}\",\"headerHash\":\"${candidate_header_hash}\"}"

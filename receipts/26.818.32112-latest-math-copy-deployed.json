@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-22",
+  "scope": "latest-math-copy-core-update-and-deployment",
+  "final_status": "PASS_LATEST_MATH_COPY_DEPLOYED",
+  "installed_path": "/Applications/ChatGPT-Math-26.818.32112-History.app",
+  "version": "26.818.32112",
+  "build": "6933",
+  "asar_sha256": "6ea7daa520796a215485fc2872b32da4c68a20ae3bc8295f2c758caa006c18e4",
+  "signing": {
+    "deep_strict": "passed",
+    "designated_requirement_matches_old": true,
+    "designated_requirement_certificate_slot": "leaf",
+    "entitlement_count": 6,
+    "payload_scope": "passed"
+  },
+  "runtime": {
+    "staging_isolated_launch": "passed",
+    "installed_isolated_launch": "passed",
+    "window_accessible": true,
+    "renderer_loaded": true,
+    "app_server_connected": true,
+    "authenticated_account_present": true,
+    "project_and_task_list_visible": true,
+    "user_bubble_math_rendering_visible": true,
+    "integral_bounds_visible": true,
+    "fraction_and_exponent_rendering_visible": true
+  },
+  "known_runtime_boundaries": {
+    "remote_app_server_409_observed_with_multiple_visible_instances": true,
+    "active_writer_conflict_risk": true,
+    "recommended_visible_main_count": 1,
+    "official_companion_uses_isolated_profile": true
+  },
+  "preservation": {
+    "official_app_modified": false,
+    "old_math_copy_preserved": true,
+    "stage_e_candidate_hash_changed": false,
+    "four_asar_entries_rebuilt_or_changed": false,
+    "existing_blocked_commits_rewritten": false,
+    "existing_reports_and_receipts_rewritten": false
+  },
+  "not_claimed": {
+    "full_history_300_second_cycle": true,
+    "original_fgh_update_complete": true
+  }
+}

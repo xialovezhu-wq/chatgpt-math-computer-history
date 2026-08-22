@@ -7,8 +7,8 @@ staging_app=${repo_root}/build/26.818.32112/ChatGPT-Math-26.818.32112-History.ap
 target_app=/Applications/ChatGPT-Math-26.818.32112-History.app
 deploying_app=/Applications/.ChatGPT-Math-26.818.32112-History.deploying.app
 rollback_dir=${repo_root}/build/26.818.32112/rollback
-failed_app=${rollback_dir}/failed-ChatGPT-Math-26.818.32112-History.app
-manifest=${rollback_dir}/pre-deployment-state.txt
+failed_app=${rollback_dir}/failed-after-requirement-fix-ChatGPT-Math-26.818.32112-History.app
+manifest=${rollback_dir}/pre-deployment-state-after-requirement-fix.txt
 
 [[ -d ${staging_app} ]] || { print -u2 'BLOCKED_DEPLOYMENT: staging app missing'; exit 1; }
 [[ ! -e ${target_app} ]] || { print -u2 'BLOCKED_DEPLOYMENT: target already exists'; exit 1; }

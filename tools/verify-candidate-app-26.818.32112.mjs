@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { lstat, readFile, readlink, readdir } from "node:fs/promises";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { join, relative } from "node:path";
 
@@ -47,6 +47,16 @@ function entitlements(app) {
     encoding: "utf8",
     input: xml,
   }));
+}
+
+function designatedRequirement(app) {
+  const result = spawnSync("/usr/bin/codesign", ["-d", "-r-", app], { encoding: "utf8" });
+  if (result.status !== 0) throw new Error(`Unable to read designated requirement: ${app}`);
+  const line = `${result.stdout}${result.stderr}`
+    .split(/\r?\n/u)
+    .find((value) => value.startsWith("designated => "));
+  if (line == null) throw new Error(`Missing designated requirement: ${app}`);
+  return line;
 }
 
 async function manifest(root) {
@@ -100,6 +110,12 @@ for (const forbidden of [
   if (forbidden in actualEntitlements) throw new Error(`Forbidden entitlement: ${forbidden}`);
 }
 
+const oldDesignatedRequirement = designatedRequirement(oldMathApp);
+const candidateDesignatedRequirement = designatedRequirement(candidateApp);
+if (candidateDesignatedRequirement !== oldDesignatedRequirement) {
+  throw new Error("Designated requirement mismatch");
+}
+
 const officialManifest = await manifest(officialApp);
 const candidateManifest = await manifest(candidateApp);
 const allPaths = new Set([...officialManifest.keys(), ...candidateManifest.keys()]);
@@ -130,4 +146,5 @@ console.log(JSON.stringify({
   infoDiffs: infoDiffs.sort(),
   payloadDiffs: diffs.sort(),
   entitlementKeys: [...actualEntitlementKeys].sort(),
+  designatedRequirement: candidateDesignatedRequirement,
 }, null, 2));

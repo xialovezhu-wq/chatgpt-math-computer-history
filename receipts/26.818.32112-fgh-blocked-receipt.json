@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-22",
+  "scope": "F-G-H",
+  "final_status": "BLOCKED_AMFI_SIGNING_TRUST",
+  "update_complete": false,
+  "rollback_status": "PASS_ROLLBACK_EXECUTION",
+  "baseline": {
+    "branch": "codex/update-math-copy-26.818.32112-build",
+    "starting_head": "57ea72cdcd95a69bbc427a8a81b473f6d4b573e0",
+    "official_asar_sha256": "128c748e313a7a630d689f9fa215724eb44fbea6e0a5d7990867370cf73d88d3",
+    "stage_e_candidate_sha256": "6ea7daa520796a215485fc2872b32da4c68a20ae3bc8295f2c758caa006c18e4",
+    "stage_e_receipt_match": true,
+    "old_math_asar_sha256": "e3497261ea7fcc556ad9a2f829d361c1a593a86b698175ed6825b8c92e05adef"
+  },
+  "candidate_app_build": {
+    "status": "PASS_CANDIDATE_APP_BUILD",
+    "name": "ChatGPT-Math-26.818.32112-History.app",
+    "version": "26.818.32112",
+    "build": "6933",
+    "asar_sha256": "6ea7daa520796a215485fc2872b32da4c68a20ae3bc8295f2c758caa006c18e4",
+    "header_sha256": "07ce9b81581b9858f11cded2224d50550c9702e9fa62bbfd48f7e6f69eb48eaa",
+    "bundle_id_reused_from_old_app": true
+  },
+  "signing_static": {
+    "status": "PASS_CODESIGN_STATIC",
+    "deep_strict": "passed",
+    "designated_requirement_matches_old": true,
+    "entitlements_match_old": true,
+    "entitlement_count": 6,
+    "forbidden_entitlement_expansion": false,
+    "nested_official_signatures_preserved": true,
+    "info_plist_diff_count": 3,
+    "payload_diff_paths": [
+      "Contents/Info.plist",
+      "Contents/MacOS/ChatGPT",
+      "Contents/Resources/app.asar",
+      "Contents/_CodeSignature/CodeResources"
+    ],
+    "spctl_candidate": "rejected",
+    "spctl_old_math": "rejected",
+    "runtime_signing_validation": "failed"
+  },
+  "deployment": {
+    "initial_deployment": "completed_then_rolled_back",
+    "target_before": "absent",
+    "target_after": "absent",
+    "rollback_manifest_created": true,
+    "rollback_executed": true,
+    "official_app_touched": false,
+    "old_math_app_touched": false
+  },
+  "runtime": {
+    "basic_launch": "failed",
+    "computer_use_window_observed": false,
+    "amfi_main_result": "unknown_or_adhoc_certificate_chain_rejected",
+    "nested_entitlement_constraint_observed": true,
+    "old_math_launch_probe": "failed_same_amfi_reason",
+    "adhoc_no_entitlements_probe": "failed_same_amfi_reason",
+    "local_certificate_expired": false,
+    "offline_leaf_to_packaged_root_verification": "passed",
+    "certificate_valid_from": "2026-07-31T02:36:44Z",
+    "certificate_valid_to": "2046-07-26T02:36:44Z"
+  },
+  "tests_not_reached": [
+    "math_single_dollar_ui",
+    "math_double_dollar_ui",
+    "math_protected_inputs_ui",
+    "user_bubble_ui",
+    "annotation_selected_text_ui",
+    "annotation_user_comment_ui",
+    "saved_annotation_ui",
+    "history_enable_retry",
+    "history_status_pause_resume_disable",
+    "companion_uniqueness",
+    "manual_pause_300_second_cycle",
+    "official_independent_restart_matrix"
+  ],
+  "conflict_log_counts": {
+    "before": 10,
+    "after": 10,
+    "new_conflicts": 0
+  },
+  "final_machine_state": {
+    "official_app_present": true,
+    "official_main_running": true,
+    "official_asar_unchanged": true,
+    "old_math_app_present": true,
+    "old_math_asar_unchanged": true,
+    "old_math_runtime_ready": false,
+    "new_math_installed": false,
+    "new_math_process_count": 0,
+    "failed_candidate_preserved_in_build_rollback": true,
+    "stage_e_candidate_preserved": true
+  },
+  "hard_blocker": {
+    "reason": "Current AMFI rejects both the established local certificate chain and an entitlement-free ad-hoc outer signature",
+    "prohibited_next_step": "Changing Keychain or system certificate trust",
+    "credential_access_performed": false,
+    "keychain_read_performed": false,
+    "keychain_write_performed": false
+  },
+  "not_performed": {
+    "launch_agent_change": true,
+    "real_computer_history_mcp": true,
+    "chat_database_read": true,
+    "history_body_read": true,
+    "t9_body_read": true,
+    "credential_read": true,
+    "old_copy_deletion": true,
+    "push": true,
+    "pull_request": true,
+    "tag": true,
+    "force_push": true
+  }
+}

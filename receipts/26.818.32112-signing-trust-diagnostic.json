@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-22",
+  "scope": "signing-identity-and-system-trust-read-only-diagnostic",
+  "final_status": "BLOCKED_KEYCHAIN_TRUST_ACTION_REQUIRED",
+  "update_complete": false,
+  "certificates": {
+    "leaf": {
+      "name": "Codex Math Local Signing",
+      "sha256": "05543E7A6CD81E97489413AF9A96CC16C27376FC8B3723E57BE6E129ABAE8483",
+      "login_keychain": true,
+      "system_keychain": false,
+      "private_key_login": true,
+      "private_key_system": false
+    },
+    "root": {
+      "name": "Codex Math Local Root CA",
+      "sha256": "BBE6A65934BFFCCAECDEA135C82B5D0B2B3C989F9C9AB64873270D17BB97AE02",
+      "login_keychain": true,
+      "system_keychain": false,
+      "private_key_login": false,
+      "private_key_system": false
+    }
+  },
+  "identities": {
+    "valid_codesigning_count": 1,
+    "local_identity": "Codex Math Local Signing",
+    "apple_development_found": false,
+    "developer_id_application_found": false
+  },
+  "trust": {
+    "user_code_signing_policy_for_root": true,
+    "admin_trust_settings_present": false,
+    "root_in_system_keychain": false,
+    "verify_cert_code_sign": "passed_under_current_user_trust",
+    "anchor_trusted_requirement": "passed",
+    "anchor_apple_generic_requirement": "failed",
+    "spctl_probe": "rejected",
+    "amfi_probe": "failed_unknown_certificate_chain"
+  },
+  "probes": {
+    "no_entitlements": {
+      "codesign_deep_strict": "passed",
+      "process_exit": 0,
+      "amfi_log": "failed_error_minus_423_unknown_certificate_chain"
+    },
+    "six_existing_electron_entitlements": {
+      "codesign_deep_strict": "passed",
+      "process_exit": 0,
+      "amfi_log": "failed_error_minus_423_unknown_certificate_chain"
+    },
+    "accepted_for_automatic_resigning": false
+  },
+  "required_manual_action": {
+    "target": "Codex Math Local Root CA",
+    "target_sha256": "BBE6A65934BFFCCAECDEA135C82B5D0B2B3C989F9C9AB64873270D17BB97AE02",
+    "action": "Place only the root public certificate in System Keychain and set Code Signing to Always Trust using Keychain Access",
+    "performed": false
+  },
+  "preservation": {
+    "official_asar_sha256": "128c748e313a7a630d689f9fa215724eb44fbea6e0a5d7990867370cf73d88d3",
+    "old_math_asar_sha256": "e3497261ea7fcc556ad9a2f829d361c1a593a86b698175ed6825b8c92e05adef",
+    "stage_e_candidate_sha256": "6ea7daa520796a215485fc2872b32da4c68a20ae3bc8295f2c758caa006c18e4",
+    "existing_blocked_commit_unchanged": true,
+    "existing_failure_report_unchanged": true,
+    "existing_failure_receipt_unchanged": true,
+    "new_candidate_installed": false,
+    "fgh_continued": false
+  },
+  "not_performed": {
+    "keychain_write": true,
+    "trust_settings_change": true,
+    "private_key_export_or_display": true,
+    "p12_export": true,
+    "certificate_import_create_or_delete": true,
+    "candidate_resign": true,
+    "candidate_deployment": true,
+    "official_app_modification": true,
+    "old_math_copy_deletion": true,
+    "stage_b_to_e_rebuild": true,
+    "asar_entry_change": true
+  }
+}

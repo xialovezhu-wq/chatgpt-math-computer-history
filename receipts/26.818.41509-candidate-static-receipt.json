@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-24",
+  "scope": "math-copy-26.818.41509-static-candidate-with-composer-preview",
+  "official_version": "26.818.41509",
+  "official_build": "6962",
+  "status": [
+    "PASS_REBINDING",
+    "PASS_MATH_CANDIDATE",
+    "PASS_HISTORY_CANDIDATE",
+    "PASS_STATIC_CANDIDATE"
+  ],
+  "source": {
+    "path": "/Applications/ChatGPT.app/Contents/Resources/app.asar",
+    "sha256": "8eb91bd9efbf9a4dd04b9b0afdbfcb4e0bab5da18c1919ad74ca327c00c7e791",
+    "header_sha256": "2923afd2f7a6bab88f30ff809919d83919f4ba3e61a1883303de6a9568ed3699",
+    "size": 284124509
+  },
+  "rebinding": {
+    "total": 20,
+    "retained": 12,
+    "rebound": 8,
+    "all_unique": true,
+    "composer_preview_anchors_unique": true
+  },
+  "math_candidate": {
+    "path": "build/26.818.41509/app.asar.math-static.asar",
+    "sha256": "d7b57f6994404c7c2184d6268242c678817a5203fe67093c0cf61c0cedeed9bc",
+    "header_sha256": "f0a14ed38be4acb8a2ab2fabe67c292840fb929794827b41270c34db6d4e683c",
+    "size": 299352988,
+    "metadata_change_count": 3
+  },
+  "final_candidate": {
+    "path": "build/26.818.41509/app.asar.math-history-static.asar",
+    "sha256": "19095005e8ea6862aa5d04ddf92f60ef605ea38fb34e3dac4f05653a6c9b8a48",
+    "header_sha256": "a2eabc8f1dcb8a4e75abdfb64935e6e083b3d99e47efc261b1796046460ae14b",
+    "size": 302040683,
+    "metadata_change_count": 4,
+    "changed_entries": [
+      ".vite/build/main-u1nlBt5g.js",
+      "webview/assets/app-initial-DwVrCWuo.js",
+      "webview/assets/subagent-activity-chip-group-fTxFK4Q1.js",
+      "webview/assets/user-formatted-text-BjT0CYhd.js"
+    ]
+  },
+  "candidate_entry_sha256": {
+    ".vite/build/main-u1nlBt5g.js": "420042f30535bfc9cf8c03607623ff7056178df6a875139f931913b5337d2db4",
+    "webview/assets/app-initial-DwVrCWuo.js": "99264f7788024ca3e962c02cfb198671badeec8abe22a94a6fb139d3d0a1e667",
+    "webview/assets/subagent-activity-chip-group-fTxFK4Q1.js": "8697dcd791d623ef64756dd7cf348b0dc214a02ec4e649e5c06ee94b63830038",
+    "webview/assets/user-formatted-text-BjT0CYhd.js": "43013c0e8084f110d2538c07eacf0def0362a29957e38201bc8807e3e6fdf70d"
+  },
+  "integrity": {
+    "packed_entries_checked": 8160,
+    "unpacked_entries": 402,
+    "zero_byte_entries": 1,
+    "header_round_trip": "passed",
+    "whole_entry_hashes": "passed",
+    "block_hashes": "passed",
+    "data_prefix": "byte-identical",
+    "active_range_overlap": "none"
+  },
+  "static_tests": {
+    "restricted_single_dollar": "passed",
+    "global_single_dollar_disabled": "passed",
+    "shared_math_config_byte_identical": "passed",
+    "assistant_renderer_marker_unchanged": "passed",
+    "annotation_math": "passed",
+    "composer_preview_dynamic_same_component": "passed",
+    "composer_preview_normalized_input_binding": "passed",
+    "codex_composer_preview_actual_path": "passed",
+    "composer_preview_no_duplicate_extension": "passed",
+    "history_five_method_proxy": "passed",
+    "history_non_target_methods": "unchanged"
+  },
+  "reproducibility": {
+    "runs": 2,
+    "math_candidate_sha256_equal": true,
+    "math_header_sha256_equal": true,
+    "final_candidate_sha256_equal": true,
+    "final_header_sha256_equal": true
+  },
+  "not_performed": {
+    "candidate_app_build": true,
+    "signing": true,
+    "application_launch": true,
+    "computer_history_mcp": true,
+    "deployment": true,
+    "old_copy_deletion": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-24",
+  "scope": "math-composer-preview-and-history-runtime-acceptance",
+  "final_status": "PASS_RUNTIME_CANDIDATE",
+  "candidate": {
+    "path": "build/26.818.41509/ChatGPT-Math-26.818.41509-History.app",
+    "version": "26.818.41509",
+    "build": "6962",
+    "asar_sha256": "19095005e8ea6862aa5d04ddf92f60ef605ea38fb34e3dac4f05653a6c9b8a48",
+    "asar_header_sha256": "a2eabc8f1dcb8a4e75abdfb64935e6e083b3d99e47efc261b1796046460ae14b",
+    "isolated_profile": true,
+    "real_window_loaded": true,
+    "app_server_connected": true,
+    "authenticated_account_present": true
+  },
+  "strict_preview_bubble_alignment": {
+    "preview_raw_length": 192,
+    "preview_raw_sha256": "47a0536637761ce1f8a7af271ff27a476893c0c574a3e33acd22e71b1a903cdd",
+    "bubble_raw_length": 192,
+    "bubble_raw_sha256": "47a0536637761ce1f8a7af271ff27a476893c0c574a3e33acd22e71b1a903cdd",
+    "raw_equal": true,
+    "canonical_inner_dom_preview_sha256": "98c9043d26a1cd54fe9bb4941f4e6cf41e5cb047a104b547e87269c7dd5dea66",
+    "canonical_inner_dom_bubble_sha256": "98c9043d26a1cd54fe9bb4941f4e6cf41e5cb047a104b547e87269c7dd5dea66",
+    "canonical_inner_dom_equal": true,
+    "ignored_dom_fields": [
+      "data-selected-text-overlay-target"
+    ],
+    "display_math_nodes": 1,
+    "preview_load_error": false
+  },
+  "protected_vectors": {
+    "intended_math_nodes": 1,
+    "code_span_and_fence_preserved": true,
+    "currency_preserved": true,
+    "shell_variable_preserved": true,
+    "url_preserved": true,
+    "unintended_math_nodes": 0,
+    "preview_load_error": false
+  },
+  "fail_soft": {
+    "invalid_latex_local_error_nodes": 1,
+    "blank_preview": false,
+    "source_button_available": true,
+    "page_error": false
+  },
+  "editor_invariants": {
+    "source_text_equal_after_round_trip": true,
+    "controller_text_equal_after_round_trip": true,
+    "focus_restored": true,
+    "type_then_undo_restored_exactly": true,
+    "composition_switch_blocked": true,
+    "preview_document_transactions": 0,
+    "plain_text_setting_restoration": "passed",
+    "plain_text_setting_final_value": false
+  },
+  "computer_history": {
+    "explicit_pause_via_candidate_ui": "passed",
+    "sample_interval_seconds": 45,
+    "sample_count": 8,
+    "minimum_observed_pause_seconds": 315,
+    "all_samples_state": "paused",
+    "all_samples_companion_count": 1,
+    "automatic_resume_observed": false,
+    "manual_pause_latch_observed": true,
+    "explicit_resume_via_candidate_ui": "passed",
+    "final_state": "running",
+    "final_companion_count": 1,
+    "final_manual_pause_latch": "absent"
+  },
+  "shutdown": {
+    "candidate_process_count": 0,
+    "debug_port_closed": true
+  },
+  "privacy": {
+    "message_text_recorded": false,
+    "history_content_recorded": false,
+    "credentials_accessed": false
+  },
+  "known_boundary": {
+    "remote_409_possible_with_multiple_visible_main_instances": true,
+    "no_new_409_claimed": false,
+    "recommended_visible_main_count": 1
+  }
+}

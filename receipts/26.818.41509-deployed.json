@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-24",
+  "scope": "math-copy-26.818.41509-history-deployment",
+  "final_status": "PASS_DEPLOYED",
+  "installed_path": "/Applications/ChatGPT-Math-26.818.41509-History.app",
+  "version": "26.818.41509",
+  "build": "6962",
+  "asar_sha256": "19095005e8ea6862aa5d04ddf92f60ef605ea38fb34e3dac4f05653a6c9b8a48",
+  "asar_header_sha256": "a2eabc8f1dcb8a4e75abdfb64935e6e083b3d99e47efc261b1796046460ae14b",
+  "installed_equals_staging": true,
+  "signing": {
+    "codesign_deep_strict": "passed",
+    "designated_requirement_matches_old": true,
+    "entitlement_count": 6,
+    "info_plist_scope": "passed",
+    "payload_scope": "passed",
+    "electron_asar_integrity": "passed",
+    "spctl_new": "rejected",
+    "spctl_old": "rejected",
+    "spctl_parity": true,
+    "spctl_interpretation": "expected local-signing baseline; not an Apple-notarized distribution claim",
+    "amfi_real_launch": "passed"
+  },
+  "installed_runtime": {
+    "isolated_launch": "passed",
+    "renderer_document_ready": "complete",
+    "main_surface_button_count_minimum": 220,
+    "app_server_initialize": "passed",
+    "app_server_connected": true,
+    "authenticated_account_present": true,
+    "test_message_sent": false,
+    "settings_changed": false,
+    "clean_shutdown": true
+  },
+  "runtime_acceptance_receipt": "receipts/26.818.41509-runtime-acceptance.json",
+  "rollback": {
+    "target_before": "absent",
+    "manifest_written": true,
+    "rollback_script_present": true,
+    "rollback_not_exercised_after_success": true
+  },
+  "preservation": {
+    "official_app_modified": false,
+    "old_math_copy_path": "/Applications/ChatGPT-Math-26.818.32112-History.app",
+    "old_math_copy_preserved": true,
+    "review_pack_manifest_modified": false,
+    "original_review_pack_modified": false
+  },
+  "known_boundary": {
+    "remote_409_possible_with_multiple_visible_main_instances": true,
+    "recommended_visible_main_count": 1,
+    "official_companion_uses_isolated_profile": true
+  }
+}

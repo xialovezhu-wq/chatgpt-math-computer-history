@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-25",
+  "scope": "math-copy-26.818.61809-static-candidate-with-composer-preview",
+  "official_version": "26.818.61809",
+  "official_build": "7019",
+  "status": [
+    "PASS_REBINDING",
+    "PASS_MATH_CANDIDATE",
+    "PASS_HISTORY_CANDIDATE",
+    "PASS_STATIC_CANDIDATE"
+  ],
+  "source": {
+    "path": "/Applications/ChatGPT.app/Contents/Resources/app.asar",
+    "sha256": "76bbcdc2a4a2d77cfe03904a6537d0a655f9892f27a8925e3a6c7b613801d4cf",
+    "header_sha256": "b39c87c9fb4ccfbe0fec76c4e6e8e354ee8a105d28f7f8694421cc817c86d112",
+    "size": 284126470
+  },
+  "rebinding": {
+    "migration_anchor_total": 20,
+    "migration_anchor_retained": 18,
+    "migration_anchor_rebound": 2,
+    "actual_patch_anchor_total": 15,
+    "actual_patch_anchor_retained": 10,
+    "actual_patch_anchor_rebound": 5,
+    "all_unique": true,
+    "composer_preview_anchors_unique": true,
+    "selected_cwd_atom": "bb",
+    "rejected_local_projects_map_atom": "Sb"
+  },
+  "math_candidate": {
+    "path": "build/26.818.61809/app.asar.math-static.asar",
+    "sha256": "5eed54c90e683e2beb7c28de8770d57117ae5e694804563f13d9bcd89ce4efb6",
+    "header_sha256": "940ad99700829aa669627b76f58ac4963bad85b46bb0eb454222680d15258dab",
+    "size": 299356045,
+    "metadata_change_count": 3
+  },
+  "final_candidate": {
+    "path": "build/26.818.61809/app.asar.math-history-static.asar",
+    "sha256": "20af3332ab0fbf396eee9be3cde8e61e61025eca8287a1f0388fab03aa5c8e29",
+    "header_sha256": "624b1fe2cd85d9a2d3877f9b275112e9e35e718abbb9e500231e736350876f3e",
+    "size": 302043850,
+    "metadata_change_count": 4,
+    "changed_entries": [
+      ".vite/build/main-Io6iABGI.js",
+      "webview/assets/app-initial-q5My48Y-.js",
+      "webview/assets/subagent-activity-chip-group-BjYM1hkl.js",
+      "webview/assets/user-formatted-text-CaMb4KJx.js"
+    ]
+  },
+  "candidate_entry_sha256": {
+    ".vite/build/main-Io6iABGI.js": "c209cdccabfb6044e889d499f3a92d844ea5fd9be6095e1ba92b07bfd764ef6e",
+    "webview/assets/app-initial-q5My48Y-.js": "027e94df00740ed2b99d882c1cf3b84f20494231a5fdaa79d187c1177bcbf1bc",
+    "webview/assets/subagent-activity-chip-group-BjYM1hkl.js": "03477f65a350132fe68df7a37f7f1a60839e8de6f373832ba05df2ae24934b4a",
+    "webview/assets/user-formatted-text-CaMb4KJx.js": "7a88afe2570539f785fd703f7686ff235dbe5fce92d3855298d8caff251aeaf9"
+  },
+  "integrity": {
+    "total_entries_checked": 8561,
+    "packed_entries_checked": 8160,
+    "unpacked_entries": 401,
+    "zero_byte_entries": 1,
+    "header_round_trip": "passed",
+    "whole_entry_hashes": "passed",
+    "block_hashes": "passed",
+    "data_prefix": "byte-identical",
+    "active_range_overlap": "none"
+  },
+  "static_tests": {
+    "restricted_single_dollar": "passed",
+    "global_single_dollar_disabled": "passed",
+    "shared_math_config_byte_identical": "passed",
+    "assistant_renderer_marker_unchanged": "passed",
+    "katex_protection_marker_unchanged": "passed",
+    "annotation_math": "passed",
+    "composer_preview_dynamic_same_component": "passed",
+    "composer_preview_normalized_input_binding": "passed",
+    "composer_preview_selected_cwd_atom": "passed",
+    "composer_preview_rejects_local_projects_map_atom": "passed",
+    "composer_preview_no_duplicate_extension": "passed",
+    "history_five_method_proxy": "passed",
+    "history_non_target_methods": "unchanged"
+  },
+  "reproducibility": {
+    "minimum_runs": 2,
+    "math_candidate_sha256_equal": true,
+    "math_header_sha256_equal": true,
+    "final_candidate_sha256_equal": true,
+    "final_header_sha256_equal": true
+  },
+  "not_performed": {
+    "candidate_app_build": true,
+    "signing": true,
+    "application_launch": true,
+    "computer_history_mcp": true,
+    "deployment": true,
+    "old_copy_deletion": true
+  }
+}

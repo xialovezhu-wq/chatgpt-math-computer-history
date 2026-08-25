@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-25",
+  "scope": "math-copy-26.818.61809-staging-signing-payload-static",
+  "official_version": "26.818.61809",
+  "official_build": "7019",
+  "status": [
+    "PASS_STATIC_CANDIDATE",
+    "PASS_CANDIDATE_APP_BUILD",
+    "PASS_SIGNING_PAYLOAD_STATIC"
+  ],
+  "staging_app": {
+    "path": "build/26.818.61809/ChatGPT-Math-26.818.61809-History.app",
+    "display_name": "ChatGPT Math 26.818.61809 History",
+    "asar_sha256": "20af3332ab0fbf396eee9be3cde8e61e61025eca8287a1f0388fab03aa5c8e29",
+    "asar_header_sha256": "624b1fe2cd85d9a2d3877f9b275112e9e35e718abbb9e500231e736350876f3e"
+  },
+  "rollback_copy": {
+    "version": "26.818.41509",
+    "asar_sha256": "19095005e8ea6862aa5d04ddf92f60ef605ea38fb34e3dac4f05653a6c9b8a48",
+    "preserved": true
+  },
+  "info_plist_differences": [
+    "CFBundleDisplayName",
+    "CFBundleIdentifier",
+    "ElectronAsarIntegrity"
+  ],
+  "payload_differences": [
+    "Contents/Info.plist",
+    "Contents/MacOS/ChatGPT",
+    "Contents/Resources/app.asar",
+    "Contents/_CodeSignature/CodeResources"
+  ],
+  "signing": {
+    "deep_strict": "passed",
+    "designated_requirement_matches_26_818_41509": true,
+    "entitlements_match_approved_set": true,
+    "entitlement_count": 6,
+    "gatekeeper_exit_matches_26_818_41509": true,
+    "gatekeeper_exit": 3
+  },
+  "source_unchanged": {
+    "official_asar_sha256": "76bbcdc2a4a2d77cfe03904a6537d0a655f9892f27a8925e3a6c7b613801d4cf",
+    "old_math_asar_sha256": "19095005e8ea6862aa5d04ddf92f60ef605ea38fb34e3dac4f05653a6c9b8a48"
+  },
+  "not_performed": {
+    "application_launch": true,
+    "runtime_dom": true,
+    "test_message_send": true,
+    "computer_history_state_change": true,
+    "deployment": true,
+    "installed_path_validation": true,
+    "old_copy_deletion": true,
+    "github_push": true
+  }
+}

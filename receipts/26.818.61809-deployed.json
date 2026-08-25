@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-25",
+  "scope": "math-copy-26.818.61809-history-deployment",
+  "final_status": "PASS_DEPLOYED",
+  "installed_path": "/Applications/ChatGPT-Math-26.818.61809-History.app",
+  "version": "26.818.61809",
+  "build": "7019",
+  "asar_sha256": "20af3332ab0fbf396eee9be3cde8e61e61025eca8287a1f0388fab03aa5c8e29",
+  "asar_header_sha256": "624b1fe2cd85d9a2d3877f9b275112e9e35e718abbb9e500231e736350876f3e",
+  "installed_equals_staging": true,
+  "signing_and_scope": {
+    "codesign_deep_strict": "passed",
+    "designated_requirement_matches_26_818_41509": true,
+    "entitlement_count": 6,
+    "info_plist_scope": "passed",
+    "payload_scope": "passed",
+    "electron_asar_integrity": "passed"
+  },
+  "installed_runtime": {
+    "direct_installed_executable_launch": "passed",
+    "isolated_profile": true,
+    "real_window_loaded": true,
+    "observed_app_name": "ChatGPT Math 26.818.61809 History",
+    "renderer_url": "app://-/index.html",
+    "app_server_process_present": true,
+    "preview_control_visible": true,
+    "source_control_visible": true,
+    "rendered_math_accessibility_nodes_present": true,
+    "test_message_sent": false,
+    "settings_changed_by_agent": false,
+    "left_running": true
+  },
+  "runtime_acceptance_receipt": "receipts/26.818.61809-runtime-acceptance.json",
+  "rollback": {
+    "target_before": "absent",
+    "manifest_written": true,
+    "rollback_script_present": true,
+    "rollback_not_exercised_after_success": true,
+    "old_copy_restore_from_trash_required_before_script_use": true
+  },
+  "old_copy_retirement": {
+    "version": "26.818.41509",
+    "asar_sha256": "19095005e8ea6862aa5d04ddf92f60ef605ea38fb34e3dac4f05653a6c9b8a48",
+    "applications_path_absent": true,
+    "trash_path": "$HOME/.Trash/ChatGPT-Math-26.818.41509-History.app",
+    "trash_not_emptied": true,
+    "recoverable": true,
+    "user_authorized": true
+  },
+  "preservation": {
+    "official_app_modified": false,
+    "official_asar_sha256": "76bbcdc2a4a2d77cfe03904a6537d0a655f9892f27a8925e3a6c7b613801d4cf",
+    "computer_history_state_changed_by_agent": false,
+    "review_pack_manifest_modified": false,
+    "review_pack_manifest_verified": true
+  },
+  "runtime_boundary": {
+    "full_26_818_41509_canary_matrix_rerun": false,
+    "user_visible_acceptance_recorded": true,
+    "computer_history_315_second_canary_rerun": false
+  }
+}

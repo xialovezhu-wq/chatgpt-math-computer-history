@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-25",
+  "scope": "math-copy-26.818.61809-runtime-launch-smoke",
+  "final_status": "PASS_RUNTIME_LAUNCH_SMOKE",
+  "candidate": {
+    "path": "build/26.818.61809/ChatGPT-Math-26.818.61809-History.app",
+    "version": "26.818.61809",
+    "build": "7019",
+    "asar_sha256": "20af3332ab0fbf396eee9be3cde8e61e61025eca8287a1f0388fab03aa5c8e29",
+    "asar_header_sha256": "624b1fe2cd85d9a2d3877f9b275112e9e35e718abbb9e500231e736350876f3e"
+  },
+  "launch": {
+    "direct_candidate_executable": "passed",
+    "isolated_profile": true,
+    "real_window_loaded": true,
+    "observed_app_name": "ChatGPT Math 26.818.61809 History",
+    "renderer_url": "app://-/index.html",
+    "user_observed_result": "no_issue_reported"
+  },
+  "agent_actions": {
+    "test_message_sent": false,
+    "settings_changed": false,
+    "computer_history_state_read": false,
+    "computer_history_state_changed": false,
+    "chat_body_recorded": false
+  },
+  "not_independently_verified": [
+    "preview_and_sent_bubble_source_hash_equality",
+    "normalized_component_subtree_hash_equality",
+    "annotation_math_runtime",
+    "focus_undo_and_composition",
+    "protected_input_vectors",
+    "computer_history_315_second_pause_and_restore"
+  ],
+  "interpretation": "This receipt proves a real isolated candidate launch and records the user's visible acceptance. It is not a full rerun of the 26.818.41509 runtime canary matrix."
+}

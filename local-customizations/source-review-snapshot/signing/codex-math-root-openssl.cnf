@@ -1,0 +1,14 @@
+[req]
+distinguished_name = dn
+x509_extensions = root_ext
+prompt = no
+
+[dn]
+CN = Codex Math Local Root CA
+O = Xia Zhibin Local Code Signing
+
+[root_ext]
+basicConstraints = critical,CA:TRUE,pathlen:0
+keyUsage = critical,keyCertSign,cRLSign
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always

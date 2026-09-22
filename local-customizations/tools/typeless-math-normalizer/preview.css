@@ -1,0 +1,70 @@
+:root {
+  color-scheme: light dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 18px;
+  background: Canvas;
+  color: CanvasText;
+}
+
+body {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 34px;
+}
+
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 26px;
+  margin-bottom: 26px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+
+.status {
+  margin: 0;
+  color: GrayText;
+  font-size: 15px;
+}
+
+.close-link {
+  flex: none;
+  font-size: 18px;
+  padding: 4px 0;
+  color: LinkText;
+}
+
+.preview {
+  min-height: 260px;
+  padding: 26px;
+  border: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+  border-radius: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 1.18rem;
+  line-height: 1.75;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 16px;
+  border-radius: 8px;
+  background: color-mix(in srgb, CanvasText 8%, Canvas);
+  white-space: pre;
+  font-size: 1rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.preview > code {
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+  background: color-mix(in srgb, CanvasText 8%, Canvas);
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="__CSP__">
+  <title>数学格式只读预览</title>
+  <style>__PREVIEW_STYLE__</style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>数学格式只读预览</h1>
+      <p class="status" id="preview-status">替换 0 处 · 保留 0 处</p>
+    </div>
+    <a class="close-link" href="codex-math-preview://close">返回编辑</a>
+  </header>
+  <main class="preview" id="preview-content" aria-label="只读格式预览"></main>
+
+  <script type="application/json" id="preview-data">__CODEX_MATH_PREVIEW_DATA_JSON__</script>
+  <script>__KATEX_JS__</script>
+  <script>__AUTO_RENDER_JS__</script>
+  <script>__PREVIEW_JS__</script>
+</body>
+</html>

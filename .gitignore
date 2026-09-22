@@ -27,3 +27,13 @@ manager.err.log
 official-main.log
 official-main.pid
 manual-pause.latch
+
+# Local provider credentials must never be committed.
+*.secret
+**/auth.json
+**/credentials.json
+**/api-key
+**/api_key
+**/caller-secret
+**/internal-secret
+**/cursor-public-secret
